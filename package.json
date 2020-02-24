@@ -1,9 +1,9 @@
 {
-  "name": "freemarker-loader",
-  "version": "0.4.0",
+  "name": "freemarker-loader-webpack-4",
+  "version": "0.5.0",
   "description": "Process data with Apache Freemarker templates",
   "main": "index.js",
-  "repository": "git@github.com:aixigo/freemarker-loader.git",
+  "repository": "git@github.com:gliwka/freemarker-loader.git",
   "author": "Jonas Pommerening <jonas.pommerening@gmail.com>",
   "license": "MIT",
   "scripts": {
