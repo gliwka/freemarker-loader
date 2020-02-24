@@ -14,10 +14,9 @@ const utils = require( './lib/utils' );
 const STRING_WRITER = 'java.io.StringWriter';
 
 module.exports = function( source ) {
-
    const options = loaderUtils.getOptions( this ) || {};
    const classpath = Array.isArray( options.classpath ) ? options.classpath : [ options.classpath ];
-   const baseDirectory = this.options.context || process.cwd();
+   const baseDirectory = getBaseDirectory( this );
    const template = loaderUtils.interpolateName( this, options.template, { content: source } );
 
    this.cacheable();
@@ -76,3 +75,20 @@ function invokeBlocking( job, callback ) {
       } );
    } );
 }
+
+function getBaseDirectory( webpack ) {
+   // Webpack 4
+   if( webpack.rootContext) {
+      return webpack.rootContext;
+   }
+
+   // Webpack 3
+   if( webpack.options && webpack.options.context ) {
+      return webpack.options.context;
+   }
+
+   // Fallback - Standalone
+   return process.cwd();
+}
+
+
